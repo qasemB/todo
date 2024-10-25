@@ -32,7 +32,9 @@ export default Home;
 const styles = StyleSheet.create({
     container: {
         alignItems: "center",
-        flex: 1, paddingBottom: 30
+        flex: 1, 
+        paddingBottom: 20,
+        paddingHorizontal: 10
     },
     imageContainr: {
         flex: 1,

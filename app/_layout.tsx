@@ -17,7 +17,7 @@ const MainLayout = () => {
 export default MainLayout;
 
 const styles = StyleSheet.create({
-  mainContainer: { flex: 1, paddingTop: StatusBar.currentHeight, paddingHorizontal: 10 },
+  mainContainer: { flex: 1, paddingTop: StatusBar.currentHeight },
   allScreens: { backgroundColor: "#ffffff00" }
 })
 

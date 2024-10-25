@@ -1,12 +1,32 @@
-import { AuthInputType } from "@/app/(auth)/_types";
-import { useController } from "react-hook-form";
-import { StyleSheet, TextInput, View } from "react-native";
+import { ReactNode } from "react";
+import { Control, FieldValue, FieldValues, useController } from "react-hook-form";
+import { KeyboardTypeOptions, StyleProp, StyleSheet, TextInput, View, ViewStyle } from "react-native";
 
-const AuthInput = ({ style, icon, placeholder, keyboardType, control, name, secureTextEntry }: AuthInputType) => {
+type AuthInputType<T, N extends string> = {
+    style?: StyleProp<ViewStyle>,
+    icon?: ReactNode,
+    placeholder?: string,
+    keyboardType?: KeyboardTypeOptions | undefined,
+    control: T
+    name: N
+    secureTextEntry?: boolean | undefined
+}
+
+const AuthInput = <T extends Control<FieldValues | any> | undefined, N extends string>(
+    {
+        style,
+        icon,
+        placeholder,
+        keyboardType,
+        control,
+        name,
+        secureTextEntry
+    }: AuthInputType<T, N>
+) => {
     const { field } = useController({
         name,
         control,
-        defaultValue: ""
+        defaultValue: "" as any
     })
     return (
         <View style={style}>

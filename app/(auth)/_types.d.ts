@@ -6,12 +6,15 @@ export type LoginFormType = {
     phone: string
     password: string
 }
-export type AuthInputType = {
+export type RegisterFormType = LoginFormType & {
+    conPass: string
+}
+export type AuthInputType<T, N> = {
     style?: StyleProp<ViewStyle>,
     icon?: ReactNode,
     placeholder?: string,
     keyboardType?: KeyboardTypeOptions | undefined,
-    control: Control<LoginFormType, any>
-    name: keyof LoginFormType
+    control: Control<T, any>
+    name: keyof N
     secureTextEntry?: boolean | undefined
 }

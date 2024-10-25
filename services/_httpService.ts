@@ -1,6 +1,7 @@
 import axios, { AxiosHeaderValue, AxiosHeaders, AxiosProgressEvent, AxiosResponse, RawAxiosRequestHeaders } from "axios"
 import config from './config.json'
 import { Alert } from "react-native"
+import { getStringData } from "@/utils/asyncStorage"
 
 export const apiPath = config.onlinePath
 
@@ -29,7 +30,7 @@ axios.interceptors.response.use((res)=>{
     return Promise.resolve(error)
 })
 
-const httpService = (
+const httpService = async (
 
     url : string, 
     method : "post" | "get" | "patch" | "put" | "delete", 
@@ -45,7 +46,7 @@ const httpService = (
 ) : Promise<AxiosResponse<any, any>> =>{
 
     // const tokenInfo = localStorage.getItem(GLOBAL_CONST.login_token_name)
-    const tokenInfo = ""
+    const tokenInfo = await getStringData("loginToken")    
 
     if (!headers) {
         headers = {
