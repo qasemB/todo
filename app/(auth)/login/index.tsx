@@ -29,7 +29,7 @@ const Login = () => {
         if (res.status === 200) {            
             const data = await res.data
             await storeStringData("loginToken", data.data)
-            router.push("/dashboard")
+            router.replace("/dashboard")
         }
     })
 

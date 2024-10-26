@@ -1,23 +1,24 @@
 import { Stack, useRouter } from "expo-router";
-import { ActivityIndicator, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { useAuthHook } from "@/hooks/authHook";
-import BottomNavigation from "@/components/home/BottomNavigation";
+import FullLoading from "@/components/FullLoading";
+import BottomNavigation from "./_partials/BottomNavigation";
 
 const _layout = () => {
     const router = useRouter()
     const { isLoggedin, isLoading } = useAuthHook()
 
     return isLoading
-        ? <ActivityIndicator />
+        ? <FullLoading/>
         : !isLoggedin
-            ? router.push("/login")
+            ? router.replace("/login")
             : (
                 <View style={{ backgroundColor: "#f2f2f2", flex: 1 }}>
                     <View style={dashboardStyles.container}>
                         <View style={dashboardStyles.contentContainer}>
                             <Stack screenOptions={{
                                 headerShown: false,
-                                contentStyle: { backgroundColor: "#ffffff00" }
+                                contentStyle: { backgroundColor: "#ffffff00" }                                
                             }} />
                         </View>
                     </View>

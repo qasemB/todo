@@ -1,6 +1,8 @@
 import { useCustomFont } from "@/hooks/useCustomFont";
 import { Stack } from "expo-router";
 import { SafeAreaView, StatusBar, StyleSheet } from "react-native";
+import { QueryClient, QueryClientProvider } from 'react-query'
+const queryClient = new QueryClient();
 
 const MainLayout = () => {
   const fontLoaded = useCustomFont()
@@ -8,9 +10,14 @@ const MainLayout = () => {
   if (!fontLoaded) { return null; }
 
   return (
-    <SafeAreaView style={styles.mainContainer}>
-      <Stack screenOptions={{ headerShown: false, contentStyle: styles.allScreens }} />
-    </SafeAreaView>
+
+    <QueryClientProvider client={queryClient}>
+
+      <SafeAreaView style={styles.mainContainer}>
+        <Stack screenOptions={{ headerShown: false, contentStyle: styles.allScreens }} />
+      </SafeAreaView>
+    </QueryClientProvider>
+
   );
 };
 

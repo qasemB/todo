@@ -27,7 +27,7 @@ const Login = () => {
         console.log(res.status);
         
         if (res.status === 201) {
-            router.push("/login")
+            router.replace("/login")
         }
     })
     return (
