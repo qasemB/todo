@@ -25,7 +25,7 @@ const Dashboard = () => {
     }, [])
 
     return (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, backgroundColor: "white",  }}>
             <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
                 <FaText style={{ color: "gray" }}>{userInfo?.firstName + " " + userInfo?.lastName}</FaText>
                 <FaText>لیست تسک های امروز</FaText>
@@ -62,9 +62,7 @@ const Dashboard = () => {
                     style={{ flex: 1 }}
                 />
             )}
-
-            {isFetching && <ActivityIndicator style={{ marginBottom: 100 }} size={"large"} />}
-
+            
             <TaskAction refetch={refetch} selectedTask={selectedTask} setSelectedTask={(item) => setSelectedTask(item)} />
         </View>
     );

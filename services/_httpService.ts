@@ -2,6 +2,7 @@ import axios, { AxiosHeaderValue, AxiosHeaders, AxiosProgressEvent, AxiosRespons
 import config from './config.json'
 import { Alert } from "react-native"
 import { getStringData } from "@/utils/asyncStorage"
+import { errorToast } from "@/utils/toast"
 
 export const apiPath = config.onlinePath
 
@@ -10,21 +11,21 @@ axios.interceptors.response.use((res)=>{
 },(error)=>{
     const res = error?.response
     if (!res?.status) {
-        Alert.alert("خطا", `مشکلی در ارتباط با سرور وجود دارد..`)
+        errorToast(undefined, `مشکلی در ارتباط با سرور وجود دارد..`)
         // showToast(`مشکلی در ارتباط با سرور وجود دارد..`, "error")
     }
     
     if (res?.status >= 500){
-        Alert.alert("خطا", `مشکلی از سمت سرور رخ داده است...(${res?.status})`)
+        errorToast("خطا", `مشکلی از سمت سرور رخ داده است...(${res?.status})`)
         // showToast(`مشکلی از سمت سرور رخ داده است...(${res?.status})`, "error")
     }else if (res?.status === 401) {
-        Alert.alert("خطا", `ورود غیر مجاز (${res?.status})`)
+        errorToast("خطا", `ورود غیر مجاز (${res?.status})`)
         // showToast(`ورود غیر مجاز (${res?.status})`, "error")
     }else if (res?.status > 200) {
         const message = res?.data?.message
         
-        if (message) Alert.alert("", message)
-        else Alert.alert("خطا", `در ورود اطلاعات دقت کنید`)
+        if (message) errorToast("", message)
+        else errorToast("خطا", `در ورود اطلاعات دقت کنید`)
         
     }
     return Promise.resolve(error)

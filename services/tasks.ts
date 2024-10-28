@@ -1,9 +1,13 @@
-import { TasksListItemsType } from "@/types/task"
+import { CreateTaskReqParamsType, TasksListItemsType } from "@/types/task"
 import httpService from "./_httpService"
 
 export const getTodayTasksService = async () => {
     const res = await httpService("/client/tasks", "get")
     return res?.data?.data
+}
+
+export const handleConfirmCreateTask = (values: CreateTaskReqParamsType) => {
+    return httpService("/client/tasks", "post", values)
 }
 
 export const changeTaskIsDoneService = (task: TasksListItemsType) => {

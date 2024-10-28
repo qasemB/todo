@@ -1,4 +1,4 @@
 {
     "onlinePath" : "https://todotasks-beta.vercel.app",
-    "offlinePath" : "https://localhost:5001"
+    "onlinePath1" : "http://localhost:3000"
 }

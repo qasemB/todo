@@ -1,3 +1,4 @@
+import CustomToast from "@/components/CustomToast";
 import { useCustomFont } from "@/hooks/useCustomFont";
 import { Stack } from "expo-router";
 import { SafeAreaView, StatusBar, StyleSheet } from "react-native";
@@ -12,10 +13,10 @@ const MainLayout = () => {
   return (
 
     <QueryClientProvider client={queryClient}>
-
       <SafeAreaView style={styles.mainContainer}>
         <Stack screenOptions={{ headerShown: false, contentStyle: styles.allScreens }} />
       </SafeAreaView>
+      <CustomToast />
     </QueryClientProvider>
 
   );

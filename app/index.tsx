@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     container: {
         alignItems: "center",
         flex: 1, 
-        paddingBottom: 20,
+        paddingBottom: 40,
         paddingHorizontal: 10
     },
     imageContainr: {
