@@ -21,7 +21,7 @@ const BottomNavigation = () => {
             />
             <Pressable
                 style={styles.addBtn}
-                onPress={() => pathname !== "/add-task" && router.replace("/add-task")}
+                onPress={() => pathname !== "/add-task" && router.push("/add-task")}
                 android_ripple={{ color: "#f2f2f2" }}
             >
                 <Entypo

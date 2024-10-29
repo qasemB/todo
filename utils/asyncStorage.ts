@@ -26,11 +26,19 @@ export const getStringData = async (key: string) => {
     }
 };
 
-const getObjectData = async (key: string) => {
+export const getObjectData = async (key: string) => {
     try {
         const jsonValue = await AsyncStorage.getItem(key);
         return jsonValue != null ? JSON.parse(jsonValue) : null;
     } catch (e) {
         // error reading value
+    }
+};
+
+export const removeStorageData = async (key: string) => {
+    try {
+        await AsyncStorage.removeItem(key);
+    } catch (e) {
+        // error removing value
     }
 };
